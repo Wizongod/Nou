@@ -36,7 +36,7 @@ for i = 1:size(input_set,1)
             fprintf('\n')
         end
         fprintf('Squared error: ')
-        fprintf('%.4f',(O-NN.output)*(O-NN.output)')
+        fprintf('%.4f',sqrt((O-NN.output)*(O-NN.output)'))
         fprintf('\n\n')
     end
     
@@ -44,10 +44,10 @@ for i = 1:size(input_set,1)
 
 end
 
-avg_error = avg_error/size(input_set,1);
+avg_error = sqrt(avg_error/size(input_set,1));
 
 if strcmp(verbosity,'v') || strcmp(verbosity,'v+')
-    fprintf('Average squared error: %.6f\n\n',avg_error)
+    fprintf('Average error: %.6f\n\n',avg_error)
     fprintf('------------------------------\n\n')
 end
 

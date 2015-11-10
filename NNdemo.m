@@ -19,9 +19,9 @@ output_set = [1; 1; 0; 0];
 % decay learn rate by 0.1% each epoch) or a more adaptive algorithm that
 % decays the learn rate if divergence is detected, and increases the learn
 % rate if convergence is detected.
-learn_rate = 0.01;
+learn_rate = 0.002;
 
-epochs = 10000;
+epochs = 20000;
 
 fprintf('Begin training network over %d epochs...\n',epochs);
 
@@ -29,6 +29,7 @@ figure(1)
 hold on
 xlabel('No. of epochs')
 ylabel('Average squared error')
+xlim([0 20000]);
 
 for cycle = 1:epochs
     fprintf('Epoch: %d\n',cycle);

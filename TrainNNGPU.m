@@ -1,4 +1,4 @@
-function NN = TrainNN(NN,input_set,output_set,learn_rate)
+function NN = TrainNNGPU(NN,input_set,output_set,learn_rate)
 % trains the network for 1 epoch (i.e. across one complete set of input and
 % outputs)
 % input_set and output_sets are matrices.
@@ -7,8 +7,16 @@ function NN = TrainNN(NN,input_set,output_set,learn_rate)
 
 %% Start training
 
-w_new = NN.w*0;
-b_new = NN.b*0;
+input_set = gpuArray(single(input_set));
+output_set = gpuArray(single(output_set));
+
+NN.x = gpuArray(single(NN.x));
+NN.b = gpuArray(single(NN.b));
+NN.w = gpuArray(single(NN.w));
+
+w_new = zeros(size(NN.w,1),size(NN.w,2),size(NN.w,3),'single','gpuArray');
+b_new = zeros(size(NN.b,1),size(NN.b,2),size(NN.b,3),'single','gpuArray');
+
 
 prev_toc = 0;
 tic
@@ -38,9 +46,14 @@ for cycle = 1:size(input_set,1)
     
     if toc - prev_toc >= 1
         prev_toc = toc;
-        fprintf('%.2fsecs: %d samples been trained in this epoch\n',toc,cycle)
+        fprintf('%d samples been trained in this epoch\n',cycle)
     end
 
 end
+
+NN.x = gather(NN.x);
+NN.b = gather(NN.b);
+NN.w = gather(NN.w);
+NN.output = gather(NN.output);
 
 end
