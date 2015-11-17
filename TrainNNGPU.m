@@ -9,6 +9,7 @@ function NN = TrainNNGPU(NN,input_set,output_set,learn_rate)
 
 input_set = gpuArray(single(input_set));
 output_set = gpuArray(single(output_set));
+learn_rate = gpuArray(single(learn_rate));
 
 NN.x = gpuArray(single(NN.x));
 NN.b = gpuArray(single(NN.b));
