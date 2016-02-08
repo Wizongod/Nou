@@ -1,5 +1,6 @@
 function NN = ConstructNN(nodes_in,nodes_out,hidden_struct)
-% Returns a Neural Network Object. Specify the hidden structure as a row
+% Neural Network constructor. Returns a Neural Network Object.
+% Specify the hidden structure as a row
 % vector e.g. [5 4] creates two hidden layers of width 5 -> 4
 
 % Return values:
@@ -27,6 +28,8 @@ function NN = ConstructNN(nodes_in,nodes_out,hidden_struct)
 % e.g. NN.w(:,1,2) contains the weights for each node from layer 2 going
 % into node 1 on layer 3, with NN.w(5,1,2) specifying from node 5 of layer
 % 2 going into node 1 on layer 3.
+
+
 %% Define Neural Network Properties
 
 NN.inputs = nodes_in;

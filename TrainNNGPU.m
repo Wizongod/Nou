@@ -1,7 +1,6 @@
 function NN = TrainNNGPU(NN,input_set,output_set,learn_rate)
-% trains the network for 1 epoch (i.e. across one complete set of input and
-% outputs)
-% input_set and output_sets are matrices.
+% Trains the network using the GPU through one epoch.
+% Input_set and output_sets are matrices.
 % Each row of input_set is one set of inputs and the corresponding row in
 % the output_set should contain the desired network output.
 
@@ -47,7 +46,7 @@ for cycle = 1:size(input_set,1)
     
     if toc - prev_toc >= 1
         prev_toc = toc;
-        fprintf('%d samples been trained in this epoch\n',cycle)
+        fprintf('%d samples have been trained in this epoch\n',cycle)
     end
 
 end

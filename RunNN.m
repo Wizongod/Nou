@@ -1,5 +1,8 @@
 function NN = RunNN(NN,I)
 
+% Runs the input given through neural network.
+% Access the output through NN.output
+
 % Given a Neural Network object, NN, calculate its output based on an input
 % vector I.
 

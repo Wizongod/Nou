@@ -2,6 +2,8 @@ close all
 clear all
 clc
 
+% Simple demo constructing an XOR gate.
+
 NN = ConstructNN(2,1,[2 2]); % constructs a 2-2-2-1 neural network
 fprintf('Constructed a neural network of structure [');
 fprintf('%d ',NN.structure);
