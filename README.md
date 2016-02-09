@@ -1,5 +1,5 @@
 # A Simple Matlab Neural Network
-Description: A very simple and basic Neural Network Toolbox for Matlab. Read the individual scripts, functions, and run NNdemo.m for an idea of how to use it.
+Description: A very simple and basic Neural Network Toolbox for Matlab. Read the individual scripts, functions, and run `NNdemo.m` for an idea of how to use it.
 
 I created this in order to understand neural networks better. It's very basic, in the sense that it has no optimisation at all and only has basic functions: ConstructNN, RunNN, TrainNN (split into TrainNNCPU, and TrainNNGPU).
 
@@ -14,5 +14,11 @@ Does a backpropagation once through all the data you give it (so each time you r
 
 The activation function used in all of these scripts is the leaky ReLU function, but the Sigmoid activation function is also included, and you can just replace all instances of the ReLU functions in the scripts with the Sigmoid one. It will run much slower though.
 
+The cost function is the standard quadratic cost function. I did not separate it out from TrainNN. This might be done so in the future.
+
 ##Things to be added
 - A full training script that for each epoch randomly pulls out a small batch of data (from the whole set) to train on, and then loop over to pull another random small batch of data.
+
+##Things that might be added
+- Separating out the cost function to a separate file.
+- Providing also the cross-entropy cost function.
