@@ -46,14 +46,15 @@ NN.x = zeros(1,max(NN.structure),NN.layers); % output matrix of each node
 
 
 NN.b = zeros(1,max(NN.structure),NN.layers-1); % bias matrix of each node
-% get rid of biases which do not actually exist
-for L = 1:NN.layers-1
-    i = max(NN.structure);
-    while i > NN.structure(L+1)
-        NN.b(:,i,L) = 0;
-        i = i - 1;
-    end
-end
+% get rid of biases which do not actually exist (if this is already zero
+% then this chunk isn't necessary)
+% for L = 1:NN.layers-1
+%     i = max(NN.structure);
+%     while i > NN.structure(L+1)
+%         NN.b(:,i,L) = 0;
+%         i = i - 1;
+%     end
+% end
 
 
 
