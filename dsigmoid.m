@@ -1,4 +1,4 @@
-function output = dsigmoid(x, w, b)
+function output = dSigmoid(x, w, b)
 
 % The derivative of the Sigmoid function.
 

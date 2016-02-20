@@ -1,4 +1,4 @@
-function class_score = TestNNclass(NN,input_set,output_set)
+function class_score = TestNNclass(NN,input_set,output_set,threshold)
 
 % Tests the classification accuracy of the network on input_set and output_set
 
@@ -10,7 +10,7 @@ for i = 1:size(input_set,1)
     
     NN = RunNN(NN,I);
     
-    NN.output = NN.output > 0.5;
+    NN.output = NN.output > threshold;
     
     if NN.output == O
         score = score + 1;

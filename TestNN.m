@@ -1,4 +1,4 @@
-function avg_error = TestNN(NN,input_set,output_set,verbosity)
+function avg_error = TestNN(NN,input_set,output_set,costF,verbosity)
 % Tests a neural network based on the input_set and output_set given.
 % Returns the average average^2 error.
 % input_set is a matrix where each row is the NN input vector and the
@@ -36,15 +36,15 @@ for i = 1:size(input_set,1)
             fprintf('\n')
         end
         fprintf('Squared error: ')
-        fprintf('%.4f',sqrt((O-NN.output)*(O-NN.output)'))
+        fprintf('%.4f',costF(O,NN.output))
         fprintf('\n\n')
     end
     
-    avg_error = avg_error + (O-NN.output)*(O-NN.output)';
+    avg_error = avg_error + costF(O,NN.output);
 
 end
 
-avg_error = sqrt(avg_error/size(input_set,1));
+avg_error = avg_error/size(input_set,1);
 
 if strcmp(verbosity,'v') || strcmp(verbosity,'v+')
     fprintf('Average error: %.6f\n\n',avg_error)

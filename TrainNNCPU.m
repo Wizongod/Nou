@@ -1,4 +1,6 @@
 function NN = TrainNNCPU(NN,input_set,output_set,learn_rate,weight_decay)
+% DEPRECATED
+
 % Trains the network using the CPU through one epoch.
 % Input_set and output_sets are matrices.
 % Each row of input_set is one set of inputs and the corresponding row in

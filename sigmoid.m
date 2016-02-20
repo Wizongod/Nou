@@ -1,4 +1,4 @@
-function output = sigmoid(x, w, b)
+function output = Sigmoid(x, w, b)
 
 % The Sigmoid activation function
 

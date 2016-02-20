@@ -1,10 +1,10 @@
 close all
-clear all
+clear
 clc
 
 % Simple demo constructing an XOR gate.
 
-NN = ConstructNN(2,1,[2 2]); % constructs a 2-2-2-1 neural network
+NN = ConstructNN(2,1,[2 2],@ReLU,@dReLU); % constructs a 2-2-2-1 neural network
 fprintf('Constructed a neural network of structure [');
 fprintf('%d ',NN.structure);
 fprintf(']\n\n');
@@ -35,9 +35,9 @@ xlim([0 20000]);
 
 for cycle = 1:epochs
     fprintf('Epoch: %d\n',cycle);
-    NN = TrainNN(NN,input_set,output_set,learn_rate);
+    NN = TrainNN(NN,input_set,output_set,@dQuadCost,learn_rate,0);
     if mod(cycle,100) == 0
-        avg_error = TestNN(NN,input_set,output_set);
+        avg_error = TestNN(NN,input_set,output_set,@QuadCost);
         plot(cycle,avg_error, '.k')
         drawnow
         if avg_error < 1e-4
@@ -49,7 +49,7 @@ end
 fprintf('\nTraining Complete!\n\n')
 
 
-TestNN(NN,input_set,output_set,'v+');
+TestNN(NN,input_set,output_set,@QuadCost,'v+');
 
 % pause(0.1)
 %learn_rate = learn_rate * 0.98;
