@@ -26,6 +26,7 @@ if GPU_flag
 
     w_new = zeros(size(NN.w,1),size(NN.w,2),size(NN.w,3),'single','gpuArray');
     b_new = zeros(size(NN.b,1),size(NN.b,2),size(NN.b,3),'single','gpuArray');
+% Else we still have to prep the new weights and biases
 else
     w_new = NN.w*0;
     b_new = NN.b*0;
@@ -42,13 +43,9 @@ prev_toc = 0;
 tic
 for cycle = 1:sizeIN
     
-    I = input_set(cycle,:);
-    O = output_set(cycle,:);
+    NN = RunNN(NN,input_set(cycle,:));
     
-    NN = RunNN(NN,I);
-    
-    % Cost function is 0.5*sum(O-NN.output)^2
-    derr_gb = dcostF(O,NN.output);
+    derr_gb = dcostF(output_set(cycle,:),NN.output);
     
     if size(derr_gb,2) ~= sizeNNw2
         derr_gb(size(derr_gb,2)+1:sizeNNw2) = 0;
